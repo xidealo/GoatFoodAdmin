@@ -1,5 +1,6 @@
 package com.bunbeauty.domain.feature.orderlist.di
 
+import com.bunbeauty.domain.feature.orderlist.CountTodayOrdersUseCase
 import com.bunbeauty.domain.feature.orderlist.ObserveOrderListStreamUseCase
 import com.bunbeauty.domain.feature.orderlist.UnsubscribeOrderUpdatesUseCase
 import org.koin.dsl.module
@@ -16,6 +17,12 @@ fun orderListModule() =
         factory {
             UnsubscribeOrderUpdatesUseCase(
                 orderRepo = get(),
+            )
+        }
+
+        factory {
+            CountTodayOrdersUseCase(
+                timeService = get(),
             )
         }
     }

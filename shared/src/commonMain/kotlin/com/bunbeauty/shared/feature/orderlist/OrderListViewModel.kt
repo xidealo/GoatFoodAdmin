@@ -3,6 +3,7 @@ package com.bunbeauty.shared.feature.orderlist
 import androidx.lifecycle.viewModelScope
 import com.bunbeauty.domain.enums.OrderStatus
 import com.bunbeauty.domain.feature.common.GetCafeUseCase
+import com.bunbeauty.domain.feature.orderlist.CountTodayOrdersUseCase
 import com.bunbeauty.domain.feature.orderlist.ObserveOrderListStreamUseCase
 import com.bunbeauty.domain.feature.orderlist.OrderListStreamState
 import com.bunbeauty.domain.feature.orderlist.UnsubscribeOrderUpdatesUseCase
@@ -29,6 +30,7 @@ class OrderListViewModel(
     private val observeOrderListStream: ObserveOrderListStreamUseCase,
     private val unsubscribeOrderUpdates: UnsubscribeOrderUpdatesUseCase,
     private val getCafeUseCase: GetCafeUseCase,
+    private val countTodayOrders: CountTodayOrdersUseCase,
 ) : BaseStateViewModel<OrderList.DataState, OrderList.Action, OrderList.Event>(
         initState =
             OrderList.DataState(
@@ -39,6 +41,8 @@ class OrderListViewModel(
                 orderListState = OrderList.DataState.State.LOADING,
                 cafe = null,
                 loadingOrderList = false,
+                deliveryCount = 0,
+                pickupCount = 0,
             ),
     ) {
     override fun reduce(
@@ -215,6 +219,7 @@ class OrderListViewModel(
         val hasNewOrder =
             oldOrderList.count { order -> order.orderStatus != OrderStatus.CANCELED } <
                 orderList.count { order -> order.orderStatus != OrderStatus.CANCELED }
+        val todayOrderCounts = countTodayOrders(orderList)
 
         setState {
             copy(
@@ -223,6 +228,8 @@ class OrderListViewModel(
                 refreshing = false,
                 loadingOrderList = false,
                 orderListState = OrderList.DataState.State.SUCCESS,
+                deliveryCount = todayOrderCounts.deliveryCount,
+                pickupCount = todayOrderCounts.pickupCount,
             )
         }
 

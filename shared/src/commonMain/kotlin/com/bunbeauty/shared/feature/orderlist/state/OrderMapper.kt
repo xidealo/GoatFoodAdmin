@@ -21,6 +21,7 @@ class OrderMapper {
             deferredTime = getDeferredTime(order.deferredTime),
             dateTime = DateTimeUtil.formatDateTime(order.time, PATTERN_DD_MMMM_HH_MM),
             isProblematic = order.isProblematic,
+            isDelivery = order.isDelivery,
         )
 
     @Composable
