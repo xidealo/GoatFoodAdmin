@@ -266,7 +266,8 @@ private fun OrderListSuccessScreen(
             if (activeOrders.isNotEmpty()) {
                 item(key = ORDER_LIST_ACTIVE_TITLE_KEY) {
                     Text(
-                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                            .padding(top = 16.dp),
                         text = stringResource(Res.string.title_order_list_active),
                         style = AdminTheme.typography.titleMedium.medium,
                     )
@@ -324,11 +325,19 @@ private fun TodayOrdersSummary(
     pickupCount: Int,
 ) {
     Column(modifier = Modifier.fillMaxWidth()) {
+        AdminHorizontalDivider(
+            modifier =
+                Modifier.padding(
+                    start = 16.dp,
+                    end = 16.dp,
+                    top = 4.dp,
+                ),
+        )
         Text(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(top = 16.dp, bottom = 8.dp),
+                    .padding(top = 8.dp),
             text = stringResource(Res.string.title_order_list_today),
             style = AdminTheme.typography.titleMedium.medium,
             color = AdminTheme.colors.main.onSurface,
@@ -338,7 +347,8 @@ private fun TodayOrdersSummary(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
+                    .padding(horizontal = 16.dp)
+                    .padding(top = 4.dp),
         ) {
             TodayOrderCount(
                 modifier = Modifier.weight(1f),
@@ -378,6 +388,8 @@ private fun TodayOrderCount(
             color = AdminTheme.colors.main.onSurfaceVariant,
         )
         Text(
+            modifier = Modifier
+                .padding(top = 4.dp),
             text = count.toString(),
             style = AdminTheme.typography.bodyMedium,
             color = AdminTheme.colors.main.onSurface,

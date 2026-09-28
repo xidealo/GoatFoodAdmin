@@ -1,7 +1,5 @@
 package com.bunbeauty.shared.feature.orderlist.compose
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,9 +12,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.bunbeauty.domain.enums.OrderStatus
+import com.bunbeauty.shared.designsystem.compose.element.card.AdminCard
 import com.bunbeauty.shared.designsystem.compose.element.topbar.AdminHorizontalDivider
 import com.bunbeauty.shared.designsystem.compose.theme.AdminTheme
 import com.bunbeauty.shared.designsystem.compose.theme.medium
@@ -55,12 +55,13 @@ fun OrderItem(
             Res.string.description_order_list_pickup
         }
 
-    Column(
+    AdminCard(
         modifier =
             modifier
-                .fillMaxWidth()
-                .background(backgroundColor)
-                .clickable(onClick = onClick),
+                .fillMaxWidth(),
+        onClick = onClick,
+        shape = RectangleShape,
+        elevated = false
     ) {
         Row(
             modifier =

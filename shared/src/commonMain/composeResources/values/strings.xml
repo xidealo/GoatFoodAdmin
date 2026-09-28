@@ -58,8 +58,8 @@
     <string name="title_order_list_today">Сегодня</string>
     <string name="title_order_list_active">Активные</string>
     <string name="title_order_list_canceled">Отмененные</string>
-    <string name="msg_order_list_delivery">Доставка</string>
-    <string name="msg_order_list_pickup">Самовывоз</string>
+    <string name="msg_order_list_delivery">Доставки</string>
+    <string name="msg_order_list_pickup">Самовывозы</string>
     <string name="description_order_list_delivery">Доставка</string>
     <string name="description_order_list_pickup">Самовывоз</string>
     <string name="title_order_list_select_cafe">Выберите кафе</string>
