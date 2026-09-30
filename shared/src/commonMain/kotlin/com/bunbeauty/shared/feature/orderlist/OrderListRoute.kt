@@ -314,7 +314,46 @@ private fun OrderListSuccessScreen(
 @Preview()
 @Composable
 private fun OrderListSuccessScreenPreview() {
-    AdminTheme {
+    AdminTheme(isDarkTheme = false) {
+        OrderListSuccessScreen(
+            state =
+                OrderListViewState.State.Success(
+                    orderList =
+                        persistentListOf(
+                            OrderListViewState.OrderItem(
+                                uuid = "1",
+                                status = OrderStatus.ACCEPTED,
+                                statusString = "Принят",
+                                code = "22",
+                                deferredTime = "",
+                                dateTime = "12/9/2024",
+                                isProblematic = false,
+                            ),
+                            OrderListViewState.OrderItem(
+                                uuid = "2",
+                                status = OrderStatus.CANCELED,
+                                statusString = "Отменен",
+                                code = "23",
+                                deferredTime = "",
+                                dateTime = "12/9/2024",
+                                isProblematic = true,
+                            ),
+                        ),
+                    connectionError = false,
+                    refreshing = false,
+                    loadingOrderList = false,
+                    loadingOrderUpdates = false,
+                ),
+            lazyListState = LazyListState(),
+            onAction = {},
+        )
+    }
+}
+
+@Preview()
+@Composable
+private fun OrderListSuccessScreenDarkPreview() {
+    AdminTheme(isDarkTheme = true) {
         OrderListSuccessScreen(
             state =
                 OrderListViewState.State.Success(

@@ -21,13 +21,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.unit.dp
 import coil3.compose.rememberAsyncImagePainter
+import com.bunbeauty.shared.designsystem.compose.theme.AdminTheme
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.useContents
 import platform.CoreGraphics.CGContextRotateCTM
@@ -154,8 +154,8 @@ actual fun PlatformCropImageView(
                     .fillMaxWidth()
                     .aspectRatio(preset.aspectRatio())
                     .clipToBounds()
-                    .background(Color.White)
-                    .border(1.dp, Color.White)
+                    .background(AdminTheme.colors.main.surface)
+                    .border(1.dp, AdminTheme.colors.main.stroke)
                     .onSizeChanged { size ->
                         previewWidth = size.width
                         previewHeight = size.height

@@ -502,7 +502,37 @@ private fun SettingsTypeRow(
 @Preview()
 @Composable
 private fun SettingsScreenPreview() {
-    AdminTheme {
+    AdminTheme(isDarkTheme = false) {
+        SettingsScreen(
+            state =
+                SettingsViewState(
+                    state =
+                        SettingsViewState.State.Success(
+                            isNotifications = true,
+                            isAppliances = true,
+                            workType = WorkType.DELIVERY_AND_PICKUP,
+                            acceptOrdersConfirmation =
+                                SettingsViewState.AcceptOrdersConfirmation(
+                                    isShown = false,
+                                    titleStringId = Res.string.title_settings_disable_orders,
+                                    descriptionStringId = Res.string.msg_settings_disable_orders,
+                                    buttonStringId = Res.string.action_settings_disable,
+                                    unfinishedOrderCodes = emptyList(),
+                                    isLoading = false,
+                                ),
+                            isLoading = false,
+                            workLoad = WorkLoad.LOW,
+                        ),
+                ),
+            onAction = {},
+        )
+    }
+}
+
+@Preview()
+@Composable
+private fun SettingsScreenDarkPreview() {
+    AdminTheme(isDarkTheme = true) {
         SettingsScreen(
             state =
                 SettingsViewState(

@@ -5,6 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.media.AudioAttributes
 import android.media.RingtoneManager
+import androidx.appcompat.app.AppCompatDelegate
 import com.bunbeauty.fooddeliveryadmin.di.initKoin
 import com.google.firebase.BuildConfig
 import com.google.firebase.FirebaseApp
@@ -29,6 +30,7 @@ class FoodDeliveryAdminApplication :
 
     override fun onCreate() {
         super.onCreate()
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         FirebaseApp.initializeApp(this)
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(!BuildConfig.DEBUG)
         createNotificationChannel()
