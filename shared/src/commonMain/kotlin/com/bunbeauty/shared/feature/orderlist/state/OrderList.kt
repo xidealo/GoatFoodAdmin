@@ -15,6 +15,8 @@ interface OrderList {
         val loadingOrderUpdates: Boolean,
         val cafe: Cafe?,
         val loadingOrderList: Boolean,
+        val deliveryCount: Int,
+        val pickupCount: Int,
     ) : BaseDataState {
         enum class State {
             LOADING,

@@ -63,6 +63,7 @@ class ServerOrderMapper(
             timeZone = orderServer.timeZone,
             orderStatus = getOrderStatus(orderServer.status),
             isProblematic = orderServer.isProblematic,
+            isDelivery = orderServer.isDelivery,
         )
 
     private fun getOrderStatus(statusName: String): OrderStatus = getOrderStatusNullable(statusName) ?: OrderStatus.NOT_ACCEPTED

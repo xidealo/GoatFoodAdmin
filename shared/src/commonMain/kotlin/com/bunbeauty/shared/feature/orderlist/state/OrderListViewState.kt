@@ -19,6 +19,8 @@ data class OrderListViewState(
             val refreshing: Boolean,
             val loadingOrderList: Boolean,
             val loadingOrderUpdates: Boolean,
+            val deliveryCount: Int,
+            val pickupCount: Int,
         ) : State
     }
 
@@ -31,5 +33,6 @@ data class OrderListViewState(
         val deferredTime: String,
         val dateTime: String,
         val isProblematic: Boolean,
+        val isDelivery: Boolean,
     )
 }
