@@ -1,6 +1,7 @@
 package com.bunbeauty.shared.feature.menulist.cropimage
 
 import android.widget.LinearLayout
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -60,13 +61,14 @@ actual fun PlatformCropImageView(
     modifier: Modifier,
 ) {
     val androidController = controller as AndroidPlatformCropImageController
+    val isDarkTheme = isSystemInDarkTheme()
 
     CropImageView(
         imageContent = imageUri,
         cropImageDefaults =
             when (preset) {
-                CropImagePreset.MENU_PRODUCT -> CropImageDefaults.menuProductOptions()
-                CropImagePreset.ADDITION -> CropImageDefaults.additionOptions()
+                CropImagePreset.MENU_PRODUCT -> CropImageDefaults.menuProductOptions(isDarkTheme)
+                CropImagePreset.ADDITION -> CropImageDefaults.additionOptions(isDarkTheme)
             },
         androidController = androidController,
     )

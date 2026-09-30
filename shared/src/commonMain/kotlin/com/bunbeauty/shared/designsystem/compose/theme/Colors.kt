@@ -7,6 +7,8 @@ object Colors {
     val Black1 = Color(0xFF000000)
     val Black2 = Color(0xFF161617)
     val Black3 = Color(0xFF343434)
+    val Black50 = Color(0xFF3A3A3C)
+    val Black100 = Color(0xFF2A2A2C)
     val Grey1 = Color(0xFFDDDDDD)
     val Grey2 = Color(0xFFC1C1C1)
     val Grey3 = Color(0xFFA7A5A5)

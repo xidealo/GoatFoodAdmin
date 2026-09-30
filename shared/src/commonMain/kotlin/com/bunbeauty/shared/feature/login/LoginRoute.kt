@@ -22,7 +22,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -181,7 +180,7 @@ private fun LoginScreenSuccess(
                             .padding(top = 24.dp)
                             .size(250.dp)
                             .haloGlowAnimated(
-                                color = Color(0xFF494848),
+                                color = AdminTheme.colors.main.onSurfaceVariant,
                             ),
                     painter = painterResource(Res.drawable.logo),
                     contentDescription = stringResource(Res.string.description_logo),
@@ -265,7 +264,25 @@ private fun LoginScreenSuccess(
 @Preview
 @Composable
 private fun LoginScreenPreview() {
-    AdminTheme {
+    AdminTheme(isDarkTheme = false) {
+        LoginScreen(
+            state =
+                Login.DataState(
+                    state = Login.DataState.State.SUCCESS,
+                    username = "",
+                    password = "",
+                    isPasswordVisible = false,
+                    startLoginLoading = false,
+                ),
+            onAction = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun LoginScreenDarkPreview() {
+    AdminTheme(isDarkTheme = true) {
         LoginScreen(
             state =
                 Login.DataState(

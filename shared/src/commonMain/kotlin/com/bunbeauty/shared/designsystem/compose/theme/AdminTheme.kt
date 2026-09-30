@@ -15,7 +15,7 @@ fun AdminTheme(
 ) {
     val colors =
         if (isDarkTheme) {
-            LightAdminColors
+            DarkAdminColors
         } else {
             LightAdminColors
         }
