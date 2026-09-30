@@ -266,8 +266,10 @@ private fun OrderListSuccessScreen(
             if (activeOrders.isNotEmpty()) {
                 item(key = ORDER_LIST_ACTIVE_TITLE_KEY) {
                     Text(
-                        modifier = Modifier.padding(horizontal = 16.dp)
-                            .padding(top = 16.dp),
+                        modifier =
+                            Modifier
+                                .padding(horizontal = 16.dp)
+                                .padding(top = 16.dp),
                         text = stringResource(Res.string.title_order_list_active),
                         style = AdminTheme.typography.titleMedium.medium,
                     )
@@ -388,8 +390,9 @@ private fun TodayOrderCount(
             color = AdminTheme.colors.main.onSurfaceVariant,
         )
         Text(
-            modifier = Modifier
-                .padding(top = 4.dp),
+            modifier =
+                Modifier
+                    .padding(top = 4.dp),
             text = count.toString(),
             style = AdminTheme.typography.bodyMedium,
             color = AdminTheme.colors.main.onSurface,

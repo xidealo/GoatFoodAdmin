@@ -61,7 +61,7 @@ fun OrderItem(
                 .fillMaxWidth(),
         onClick = onClick,
         shape = RectangleShape,
-        elevated = false
+        elevated = false,
     ) {
         Row(
             modifier =
