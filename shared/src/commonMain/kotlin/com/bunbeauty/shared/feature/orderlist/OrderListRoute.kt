@@ -39,6 +39,7 @@ import fooddeliveryadmin.shared.generated.resources.Res
 import fooddeliveryadmin.shared.generated.resources.error_order_list_connection
 import fooddeliveryadmin.shared.generated.resources.ic_profile
 import fooddeliveryadmin.shared.generated.resources.msg_order_list_delivery
+import fooddeliveryadmin.shared.generated.resources.msg_order_list_empty
 import fooddeliveryadmin.shared.generated.resources.msg_order_list_pickup
 import fooddeliveryadmin.shared.generated.resources.title_order_list_active
 import fooddeliveryadmin.shared.generated.resources.title_order_list_canceled
@@ -52,6 +53,7 @@ import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 
 private const val ORDER_LIST_TODAY_KEY = "order_list_today"
+private const val ORDER_LIST_EMPTY_KEY = "order_list_empty"
 private const val ORDER_LIST_ACTIVE_TITLE_KEY = "order_list_active_title"
 private const val ORDER_LIST_CANCELED_TITLE_KEY = "order_list_canceled_title"
 
@@ -258,66 +260,94 @@ private fun OrderListSuccessScreen(
                 )
             }
 
-            val (canceledOrders, activeOrders) =
-                state.orderList.partition { orderItem ->
-                    orderItem.status == OrderStatus.CANCELED
+            if (state.orderList.isNotEmpty()) {
+                val (canceledOrders, activeOrders) =
+                    state.orderList.partition { orderItem ->
+                        orderItem.status == OrderStatus.CANCELED
+                    }
+
+                if (activeOrders.isNotEmpty()) {
+                    item(key = ORDER_LIST_ACTIVE_TITLE_KEY) {
+                        Text(
+                            modifier =
+                                Modifier
+                                    .padding(horizontal = 16.dp)
+                                    .padding(top = 16.dp),
+                            text = stringResource(Res.string.title_order_list_active),
+                            style = AdminTheme.typography.titleMedium.medium,
+                        )
+                    }
+                    items(
+                        items = activeOrders,
+                        key = { orderItem -> orderItem.uuid },
+                    ) { orderItem ->
+                        OrderItem(
+                            orderItem = orderItem,
+                            onClick = {
+                                onAction(
+                                    OrderList.Action.OrderClick(
+                                        orderCode = orderItem.code,
+                                        orderUuid = orderItem.uuid,
+                                    ),
+                                )
+                            },
+                        )
+                    }
                 }
 
-            if (activeOrders.isNotEmpty()) {
-                item(key = ORDER_LIST_ACTIVE_TITLE_KEY) {
-                    Text(
-                        modifier =
-                            Modifier
-                                .padding(horizontal = 16.dp)
-                                .padding(top = 16.dp),
-                        text = stringResource(Res.string.title_order_list_active),
-                        style = AdminTheme.typography.titleMedium.medium,
-                    )
+                if (canceledOrders.isNotEmpty()) {
+                    item(key = ORDER_LIST_CANCELED_TITLE_KEY) {
+                        Text(
+                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
+                            text = stringResource(Res.string.title_order_list_canceled),
+                            style = AdminTheme.typography.titleMedium.medium,
+                        )
+                    }
+                    items(
+                        items = canceledOrders,
+                        key = { orderItem -> orderItem.uuid },
+                    ) { orderItem ->
+                        OrderItem(
+                            orderItem = orderItem,
+                            onClick = {
+                                onAction(
+                                    OrderList.Action.OrderClick(
+                                        orderCode = orderItem.code,
+                                        orderUuid = orderItem.uuid,
+                                    ),
+                                )
+                            },
+                        )
+                    }
                 }
-                items(
-                    items = activeOrders,
-                    key = { orderItem -> orderItem.uuid },
-                ) { orderItem ->
-                    OrderItem(
-                        orderItem = orderItem,
-                        onClick = {
-                            onAction(
-                                OrderList.Action.OrderClick(
-                                    orderCode = orderItem.code,
-                                    orderUuid = orderItem.uuid,
-                                ),
-                            )
-                        },
-                    )
-                }
-            }
-
-            if (canceledOrders.isNotEmpty()) {
-                item(key = ORDER_LIST_CANCELED_TITLE_KEY) {
-                    Text(
-                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
-                        text = stringResource(Res.string.title_order_list_canceled),
-                        style = AdminTheme.typography.titleMedium.medium,
-                    )
-                }
-                items(
-                    items = canceledOrders,
-                    key = { orderItem -> orderItem.uuid },
-                ) { orderItem ->
-                    OrderItem(
-                        orderItem = orderItem,
-                        onClick = {
-                            onAction(
-                                OrderList.Action.OrderClick(
-                                    orderCode = orderItem.code,
-                                    orderUuid = orderItem.uuid,
-                                ),
-                            )
-                        },
-                    )
+            } else {
+                item(key = ORDER_LIST_EMPTY_KEY) {
+                    OrderListEmptyLabel()
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun OrderListEmptyLabel() {
+    Box(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(top = 48.dp),
+    ) {
+        Text(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = AdminTheme.dimensions.mediumSpace)
+                    .align(Alignment.Center),
+            text = stringResource(Res.string.msg_order_list_empty),
+            style = AdminTheme.typography.titleMedium,
+            color = AdminTheme.colors.main.onSurface,
+            textAlign = TextAlign.Center,
+        )
     }
 }
 
