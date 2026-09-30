@@ -194,12 +194,14 @@ fun viewModelModule() =
                 getCafeUseCase = get(),
                 observeOrderListStream = get(),
                 unsubscribeOrderUpdates = get(),
+                countTodayOrders = get(),
             )
         }
 
         viewModel {
             ProfileViewModel(
                 getProfileUserUseCase = get(),
+                getCafeUseCase = get(),
                 logoutUseCase = get(),
             )
         }

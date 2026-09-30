@@ -14,12 +14,13 @@ data class OrderListViewState(
         data object Loading : State
 
         data class Success(
-            val cafeAddress: String,
             val orderList: ImmutableList<OrderItem>,
             val connectionError: Boolean,
             val refreshing: Boolean,
             val loadingOrderList: Boolean,
             val loadingOrderUpdates: Boolean,
+            val deliveryCount: Int,
+            val pickupCount: Int,
         ) : State
     }
 
@@ -32,5 +33,6 @@ data class OrderListViewState(
         val deferredTime: String,
         val dateTime: String,
         val isProblematic: Boolean,
+        val isDelivery: Boolean,
     )
 }

@@ -77,14 +77,15 @@ internal fun MapDeliveryZone.DataState.toViewState(): MapDeliveryZoneViewState =
             },
     )
 
+/** Fixed map polygon hues — theme-independent for zone contrast on the map. */
 private object MapColors {
     val polygonColors =
         listOf(
-            Color(0xFFFF5252), // Red
-            Color(0xFF9C27B0), // Purple
-            Color(0xFFFFAB40), // Light Orange
-            Color(0xFF42A5F5), // Blue
-            Color(0xFF66BB6A), // Green
+            Color(0xFFFF5252),
+            Color(0xFF9C27B0),
+            Color(0xFFFFAB40),
+            Color(0xFF42A5F5),
+            Color(0xFF66BB6A),
         )
 
     fun generatePolygonColor(index: Int): Color = polygonColors[index % polygonColors.size]

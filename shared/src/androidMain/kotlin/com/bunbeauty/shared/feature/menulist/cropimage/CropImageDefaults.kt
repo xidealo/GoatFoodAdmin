@@ -19,39 +19,48 @@ object CropImageDefaults {
         const val MIN_HEIGHT = 320
     }
 
-    fun menuProductOptions(): CropImageOptions =
-        CropImageOptions(
-            imageSourceIncludeCamera = false,
-            cropShape = CropImageView.CropShape.RECTANGLE,
-            showProgressBar = false,
-            autoZoomEnabled = false,
+    fun menuProductOptions(isDarkTheme: Boolean): CropImageOptions =
+        themedOptions(
+            isDarkTheme = isDarkTheme,
             aspectRatioX = MenuProductOptions.DEFAULT_X_RATIO,
             aspectRatioY = MenuProductOptions.DEFAULT_Y_RATIO,
-            minCropResultWidth = MenuProductOptions.MIN_WIDTH,
-            minCropResultHeight = MenuProductOptions.MIN_HEIGHT,
-            fixAspectRatio = true,
-            toolbarColor = Color.WHITE,
-            activityBackgroundColor = Color.WHITE,
-            activityMenuIconColor = Color.BLACK,
-            activityMenuTextColor = Color.BLACK,
-            toolbarBackButtonColor = Color.BLACK,
+            minWidth = MenuProductOptions.MIN_WIDTH,
+            minHeight = MenuProductOptions.MIN_HEIGHT,
         )
 
-    fun additionOptions(): CropImageOptions =
-        CropImageOptions(
+    fun additionOptions(isDarkTheme: Boolean): CropImageOptions =
+        themedOptions(
+            isDarkTheme = isDarkTheme,
+            aspectRatioX = AdditionOptions.DEFAULT_X_RATIO,
+            aspectRatioY = AdditionOptions.DEFAULT_Y_RATIO,
+            minWidth = AdditionOptions.MIN_WIDTH,
+            minHeight = AdditionOptions.MIN_HEIGHT,
+        )
+
+    private fun themedOptions(
+        isDarkTheme: Boolean,
+        aspectRatioX: Int,
+        aspectRatioY: Int,
+        minWidth: Int,
+        minHeight: Int,
+    ): CropImageOptions {
+        val chromeBackground = if (isDarkTheme) Color.parseColor("#161617") else Color.WHITE
+        val chromeContent = if (isDarkTheme) Color.WHITE else Color.BLACK
+        return CropImageOptions(
             imageSourceIncludeCamera = false,
             cropShape = CropImageView.CropShape.RECTANGLE,
             showProgressBar = false,
             autoZoomEnabled = false,
-            aspectRatioX = AdditionOptions.DEFAULT_X_RATIO,
-            aspectRatioY = AdditionOptions.DEFAULT_Y_RATIO,
-            minCropResultWidth = AdditionOptions.MIN_WIDTH,
-            minCropResultHeight = AdditionOptions.MIN_HEIGHT,
+            aspectRatioX = aspectRatioX,
+            aspectRatioY = aspectRatioY,
+            minCropResultWidth = minWidth,
+            minCropResultHeight = minHeight,
             fixAspectRatio = true,
-            toolbarColor = Color.WHITE,
-            activityBackgroundColor = Color.WHITE,
-            activityMenuIconColor = Color.BLACK,
-            activityMenuTextColor = Color.BLACK,
-            toolbarBackButtonColor = Color.BLACK,
+            toolbarColor = chromeBackground,
+            activityBackgroundColor = chromeBackground,
+            activityMenuIconColor = chromeContent,
+            activityMenuTextColor = chromeContent,
+            toolbarBackButtonColor = chromeContent,
         )
+    }
 }

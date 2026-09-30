@@ -60,7 +60,18 @@ fun MainButton(
 @Preview
 @Composable
 private fun MainButtonPreview() {
-    AdminTheme {
+    AdminTheme(isDarkTheme = false) {
+        MainButton(
+            textStringId = Res.string.action_retry,
+            onClick = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun MainButtonDarkPreview() {
+    AdminTheme(isDarkTheme = true) {
         MainButton(
             textStringId = Res.string.action_retry,
             onClick = {},
@@ -71,7 +82,7 @@ private fun MainButtonPreview() {
 @Preview
 @Composable
 private fun MainButtonDisabledPreview() {
-    AdminTheme {
+    AdminTheme(isDarkTheme = false) {
         MainButton(
             textStringId = Res.string.action_retry,
             isEnabled = false,

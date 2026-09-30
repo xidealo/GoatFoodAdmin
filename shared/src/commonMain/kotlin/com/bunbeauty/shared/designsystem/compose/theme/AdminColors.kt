@@ -6,65 +6,29 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
-import com.bunbeauty.shared.designsystem.compose.theme.Colors.Black1
 import com.bunbeauty.shared.designsystem.compose.theme.Colors.Blue1
-import com.bunbeauty.shared.designsystem.compose.theme.Colors.Blue2
-import com.bunbeauty.shared.designsystem.compose.theme.Colors.Cream
-import com.bunbeauty.shared.designsystem.compose.theme.Colors.DarkGrey
-import com.bunbeauty.shared.designsystem.compose.theme.Colors.Green
-import com.bunbeauty.shared.designsystem.compose.theme.Colors.Grey1
-import com.bunbeauty.shared.designsystem.compose.theme.Colors.Grey2
-import com.bunbeauty.shared.designsystem.compose.theme.Colors.Grey3
-import com.bunbeauty.shared.designsystem.compose.theme.Colors.LightGreen
-import com.bunbeauty.shared.designsystem.compose.theme.Colors.LightRed
 import com.bunbeauty.shared.designsystem.compose.theme.Colors.PaleOrange
-import com.bunbeauty.shared.designsystem.compose.theme.Colors.Purple
-import com.bunbeauty.shared.designsystem.compose.theme.Colors.Red
 import com.bunbeauty.shared.designsystem.compose.theme.Colors.SurfaceVariant
-import com.bunbeauty.shared.designsystem.compose.theme.Colors.White
-import com.bunbeauty.shared.designsystem.compose.theme.Colors.Yellow
 
 val LightAdminColors =
     AdminColors(
         main =
-            MainColors(
+            ColorDefaults.lightMainColors(
                 primary = Blue1,
-                disabled = Grey1,
-                secondary = White,
-                background = Cream,
-                surface = White,
                 surfaceVariant = SurfaceVariant,
-                error = Red,
-                onPrimary = White,
-                onDisabled = Grey3,
-                onSecondary = Grey3,
-                onBackground = Black1,
-                onSurface = Black1,
-                onSurfaceVariant = Grey2,
-                onError = White,
-                stroke = Cream,
                 strokeVariant = PaleOrange,
             ),
-        order =
-            OrderColors(
-                notAccepted = Purple,
-                accepted = Blue2,
-                preparing = LightRed,
-                sentOut = Yellow,
-                done = LightGreen,
-                delivered = Green,
-                canceled = DarkGrey,
-                onOrder = White,
-            ),
-        status =
-            StatusColors(
-                positive = Green,
-                warning = Yellow,
-                negative = LightRed,
-                info = Blue1,
-                onStatus = White,
-            ),
+        order = ColorDefaults.orderColors(),
+        status = ColorDefaults.statusColors(),
         isLight = true,
+    )
+
+val DarkAdminColors =
+    AdminColors(
+        main = ColorDefaults.darkMainColors(primary = Blue1),
+        order = ColorDefaults.orderColors(),
+        status = ColorDefaults.statusColors(),
+        isLight = false,
     )
 
 val LocalAdminColors = staticCompositionLocalOf { LightAdminColors }
@@ -86,9 +50,9 @@ class AdminColors(
         internal set
 
     fun copy(
-        mainColors: MainColors = this.main,
-        orderColors: OrderColors = this.order,
-        statusColors: StatusColors = this.status,
+        mainColors: MainColors = this.main.copy(),
+        orderColors: OrderColors = this.order.copy(),
+        statusColors: StatusColors = this.status.copy(),
         isLight: Boolean = this.isLight,
     ) = AdminColors(
         main = mainColors,
