@@ -226,6 +226,7 @@ private fun AdditionGroupListSeparatedContent(
                 Text(
                     text = stringResource(Res.string.title_menu_list_position_visible),
                     style = AdminTheme.typography.titleMedium.bold,
+                    color = AdminTheme.colors.main.onBackground,
                 )
             }
             items(
@@ -247,6 +248,7 @@ private fun AdditionGroupListSeparatedContent(
                 Text(
                     text = stringResource(Res.string.title_menu_list_position_hidden),
                     style = AdminTheme.typography.titleMedium.bold,
+                    color = AdminTheme.colors.main.onBackground,
                     modifier = Modifier.padding(top = 8.dp),
                 )
             }

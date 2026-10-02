@@ -359,6 +359,9 @@ private fun CancellationWarningDialog(
 
     AlertDialog(
         onDismissRequest = onDismiss,
+        containerColor = AdminTheme.colors.main.surface,
+        titleContentColor = AdminTheme.colors.main.onSurface,
+        textContentColor = AdminTheme.colors.main.onSurface,
         title = {
             Text(text = stringResource(Res.string.title_order_details_alert))
         },
@@ -367,12 +370,18 @@ private fun CancellationWarningDialog(
         },
         confirmButton = {
             TextButton(onClick = onConfirm) {
-                Text(text = stringResource(Res.string.action_order_details_yes))
+                Text(
+                    text = stringResource(Res.string.action_order_details_yes),
+                    color = AdminTheme.colors.main.primary,
+                )
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text(text = stringResource(Res.string.action_order_details_no))
+                Text(
+                    text = stringResource(Res.string.action_order_details_no),
+                    color = AdminTheme.colors.main.primary,
+                )
             }
         },
     )

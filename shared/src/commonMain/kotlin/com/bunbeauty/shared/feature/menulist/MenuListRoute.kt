@@ -262,6 +262,7 @@ private fun MenuListSeparatedContent(
                             ),
                     text = stringResource(Res.string.title_menu_list_position_visible),
                     style = AdminTheme.typography.titleMedium.bold,
+                    color = AdminTheme.colors.main.onBackground,
                 )
             }
             items(
@@ -295,6 +296,7 @@ private fun MenuListSeparatedContent(
                             ),
                     text = stringResource(Res.string.title_menu_list_position_hidden),
                     style = AdminTheme.typography.titleMedium.bold,
+                    color = AdminTheme.colors.main.onBackground,
                 )
             }
             items(
@@ -405,6 +407,8 @@ private fun MenuListProductCard(
                         .weight(1f)
                         .padding(top = AdminTheme.dimensions.smallSpace)
                         .padding(horizontal = AdminTheme.dimensions.smallSpace),
+                style = AdminTheme.typography.bodyMedium,
+                color = AdminTheme.colors.main.onSurface,
             )
 
             IconButton(
