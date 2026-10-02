@@ -11,8 +11,15 @@ object AdminSwitchDefaults {
             SwitchDefaults.colors(
                 checkedThumbColor = AdminTheme.colors.main.onPrimary,
                 checkedTrackColor = AdminTheme.colors.main.primary,
+                checkedBorderColor = AdminTheme.colors.main.primary,
                 uncheckedThumbColor = AdminTheme.colors.main.onDisabled,
                 uncheckedTrackColor = AdminTheme.colors.main.disabled,
                 uncheckedBorderColor = AdminTheme.colors.main.onDisabled,
+                disabledCheckedThumbColor = AdminTheme.colors.main.onDisabled,
+                disabledCheckedTrackColor = AdminTheme.colors.main.disabled,
+                disabledCheckedBorderColor = AdminTheme.colors.main.onDisabled,
+                disabledUncheckedThumbColor = AdminTheme.colors.main.onDisabled,
+                disabledUncheckedTrackColor = AdminTheme.colors.main.disabled,
+                disabledUncheckedBorderColor = AdminTheme.colors.main.onDisabled,
             )
 }

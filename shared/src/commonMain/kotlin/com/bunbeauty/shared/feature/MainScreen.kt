@@ -76,6 +76,8 @@ fun MainScreen(
             modifier =
                 modifier
                     .imePadding(),
+            containerColor = AdminTheme.colors.main.background,
+            contentColor = AdminTheme.colors.main.onBackground,
             snackbarHost = {
                 AdminSnackbarHost(
                     snackbarHostState = snackbarHostState,
@@ -180,6 +182,9 @@ private fun AdminSnackbarHost(
                 snackbarData = snackbarData,
                 containerColor = containerColor,
                 contentColor = contentColor,
+                actionColor = contentColor,
+                actionContentColor = contentColor,
+                dismissActionContentColor = contentColor,
             )
         }
     }

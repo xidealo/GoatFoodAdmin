@@ -2,6 +2,8 @@ package com.bunbeauty.shared.designsystem.compose.theme
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
@@ -25,11 +27,14 @@ fun AdminTheme(
         }.apply {
             update(colors)
         }
+    val typography = AdminTypography()
 
     CompositionLocalProvider(
         LocalAdminColors provides rememberedColors,
         LocalAdminDimensions provides AdminDimensions(),
-        LocalAdminTypography provides AdminTypography(),
+        LocalAdminTypography provides typography,
+        LocalContentColor provides rememberedColors.main.onBackground,
+        LocalTextStyle provides typography.bodyMedium,
         content = content,
     )
 }

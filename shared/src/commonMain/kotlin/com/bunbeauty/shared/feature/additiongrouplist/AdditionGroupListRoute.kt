@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -226,6 +227,7 @@ private fun AdditionGroupListSeparatedContent(
                 Text(
                     text = stringResource(Res.string.title_menu_list_position_visible),
                     style = AdminTheme.typography.titleMedium.bold,
+                    color = AdminTheme.colors.main.onBackground,
                 )
             }
             items(
@@ -247,6 +249,7 @@ private fun AdditionGroupListSeparatedContent(
                 Text(
                     text = stringResource(Res.string.title_menu_list_position_hidden),
                     style = AdminTheme.typography.titleMedium.bold,
+                    color = AdminTheme.colors.main.onBackground,
                     modifier = Modifier.padding(top = 8.dp),
                 )
             }
@@ -364,6 +367,10 @@ private fun AdditionGroupCard(
                         ),
                     )
                 },
+                colors =
+                    IconButtonDefaults.iconButtonColors(
+                        contentColor = additionItem.iconColor,
+                    ),
             ) {
                 Icon(
                     painter = painterResource(Res.drawable.ic_visible),

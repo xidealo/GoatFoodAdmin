@@ -14,6 +14,7 @@ import com.bunbeauty.shared.designsystem.compose.theme.AdminTheme
 fun AdminSurface(
     modifier: Modifier = Modifier,
     color: Color = AdminTheme.colors.main.surface,
+    contentColor: Color = AdminTheme.colors.main.onSurface,
     elevated: Boolean = true,
     shape: Shape = AdminCardDefaults.cardShape,
     border: BorderStroke? = null,
@@ -24,6 +25,7 @@ fun AdminSurface(
         border = border,
         modifier = modifier.zIndex(1f),
         color = color,
+        contentColor = contentColor,
         shadowElevation = AdminSurfaceDefaults.getSurfaceElevation(elevated),
         content = content,
     )
