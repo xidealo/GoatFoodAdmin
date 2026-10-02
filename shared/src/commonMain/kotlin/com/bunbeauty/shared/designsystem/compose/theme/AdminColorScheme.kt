@@ -4,7 +4,6 @@ import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 
-
 internal fun AdminColors.toColorScheme(): ColorScheme {
     val base = if (isLight) lightColorScheme() else darkColorScheme()
     return base.copy(
