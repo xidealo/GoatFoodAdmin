@@ -4,13 +4,12 @@ import androidx.compose.ui.graphics.Color
 
 object Colors {
     val White = Color(0xFFFFFFFF)
-    val Black1 = Color(0xFF000000)
-    val Black2 = Color(0xFF161617)
-    val Black3 = Color(0xFF343434)
-    val Black50 = Color(0xFF3A3A3C)
-    val Black100 = Color(0xFF2A2A2C)
+    val Black50 = Color(0xFF3F3F6A)
+    val Black100 = Color(0xFF353549)
+    val Black200 = Color(0xFF25252F)
+    val Black300 = Color(0xFF18181E)
     val Grey1 = Color(0xFFDDDDDD)
-    val Grey2 = Color(0xFFC1C1C1)
+    val Grey2 = Color(0xFFAAAAAA)
     val Grey3 = Color(0xFFA7A5A5)
     val Cream = Color(0xFFF2F1F6)
     val SurfaceVariant = Color(0xFFFCF5ED)
@@ -23,7 +22,5 @@ object Colors {
     val LightGreen = Color(0xFF86BD47)
     val Green = Color(0xFF5BC589)
     val DarkGrey = Color(0xFF7B7A80)
-    val LightBlue = Color(0xFF0AB9E8)
-    val LightOrange = Color(0xFFFDA65D)
     val PaleOrange = Color(0xFFFDE0BE)
 }

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -76,6 +77,10 @@ fun TimePickerDialog(
                 Spacer(modifier = Modifier.weight(1f))
                 TextButton(
                     onClick = onDismiss,
+                    colors =
+                        ButtonDefaults.textButtonColors(
+                            contentColor = AdminTheme.colors.main.onSurface,
+                        ),
                 ) {
                     Text(
                         text = stringResource(Res.string.action_common_cancel),
@@ -85,6 +90,10 @@ fun TimePickerDialog(
                 }
                 TextButton(
                     modifier = Modifier.padding(start = 8.dp),
+                    colors =
+                        ButtonDefaults.textButtonColors(
+                            contentColor = AdminTheme.colors.main.primary,
+                        ),
                     onClick = {
                         onConfirm(
                             timePickerState.hour,

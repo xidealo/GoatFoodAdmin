@@ -4,7 +4,6 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.LocalTextStyle
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
@@ -34,15 +33,10 @@ fun AdminTheme(
         LocalAdminColors provides rememberedColors,
         LocalAdminDimensions provides AdminDimensions(),
         LocalAdminTypography provides typography,
-    ) {
-        MaterialTheme(colorScheme = rememberedColors.toColorScheme()) {
-            CompositionLocalProvider(
-                LocalContentColor provides rememberedColors.main.onBackground,
-                LocalTextStyle provides typography.bodyMedium,
-                content = content,
-            )
-        }
-    }
+        LocalContentColor provides rememberedColors.main.onBackground,
+        LocalTextStyle provides typography.bodyMedium,
+        content = content,
+    )
 }
 
 object AdminTheme {

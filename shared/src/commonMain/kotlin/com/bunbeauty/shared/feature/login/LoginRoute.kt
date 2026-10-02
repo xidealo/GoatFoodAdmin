@@ -16,6 +16,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -242,6 +243,10 @@ private fun LoginScreenSuccess(
                         onClick = {
                             onAction(Login.Action.ChangeVisiblePassword)
                         },
+                        colors =
+                            IconButtonDefaults.iconButtonColors(
+                                contentColor = AdminTheme.colors.main.onSurfaceVariant,
+                            ),
                     ) {
                         Icon(
                             painter =
