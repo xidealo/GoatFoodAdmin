@@ -14,19 +14,24 @@ object AdminCardDefaults {
         @Composable get() =
             CardDefaults.cardColors(
                 containerColor = AdminTheme.colors.main.surface,
+                contentColor = AdminTheme.colors.main.onSurface,
                 disabledContainerColor = AdminTheme.colors.main.surface,
+                disabledContentColor = AdminTheme.colors.main.onSurface,
             )
     val cardVariantColors: CardColors
         @Composable get() =
             CardDefaults.cardColors(
                 containerColor = AdminTheme.colors.main.surfaceVariant,
-                disabledContainerColor = AdminTheme.colors.main.onSurfaceVariant,
+                contentColor = AdminTheme.colors.main.onSurface,
+                disabledContainerColor = AdminTheme.colors.main.surfaceVariant,
+                disabledContentColor = AdminTheme.colors.main.onSurface,
             )
 
     val cardPositiveColors: CardColors
         @Composable get() =
             CardDefaults.cardColors(
                 containerColor = AdminTheme.colors.status.positive,
+                contentColor = AdminTheme.colors.status.onStatus,
             )
 
     val cardBorder: BorderStroke
@@ -40,6 +45,7 @@ object AdminCardDefaults {
         @Composable get() =
             CardDefaults.cardColors(
                 containerColor = AdminTheme.colors.status.warning,
+                contentColor = AdminTheme.colors.status.onStatus,
             )
 
     val cardShape: RoundedCornerShape

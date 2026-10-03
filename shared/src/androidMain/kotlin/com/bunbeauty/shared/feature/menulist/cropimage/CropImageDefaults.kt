@@ -44,8 +44,8 @@ object CropImageDefaults {
         minWidth: Int,
         minHeight: Int,
     ): CropImageOptions {
-        val chromeBackground = if (isDarkTheme) Color.parseColor("#161617") else Color.WHITE
-        val chromeContent = if (isDarkTheme) Color.WHITE else Color.BLACK
+        val chromeBackground = if (isDarkTheme) Color.parseColor("#18181E") else Color.WHITE
+        val chromeContent = if (isDarkTheme) Color.WHITE else Color.parseColor("#18181E")
         return CropImageOptions(
             imageSourceIncludeCamera = false,
             cropShape = CropImageView.CropShape.RECTANGLE,

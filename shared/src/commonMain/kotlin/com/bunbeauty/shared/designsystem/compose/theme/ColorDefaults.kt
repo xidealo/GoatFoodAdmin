@@ -2,8 +2,8 @@ package com.bunbeauty.shared.designsystem.compose.theme
 
 import androidx.compose.ui.graphics.Color
 import com.bunbeauty.shared.designsystem.compose.theme.Colors.Black100
-import com.bunbeauty.shared.designsystem.compose.theme.Colors.Black2
-import com.bunbeauty.shared.designsystem.compose.theme.Colors.Black3
+import com.bunbeauty.shared.designsystem.compose.theme.Colors.Black200
+import com.bunbeauty.shared.designsystem.compose.theme.Colors.Black300
 import com.bunbeauty.shared.designsystem.compose.theme.Colors.Black50
 import com.bunbeauty.shared.designsystem.compose.theme.Colors.Blue1
 import com.bunbeauty.shared.designsystem.compose.theme.Colors.Blue2
@@ -37,8 +37,8 @@ object ColorDefaults {
             onPrimary = White,
             onDisabled = Grey3,
             onSecondary = Grey3,
-            onBackground = Colors.Black1,
-            onSurface = Colors.Black1,
+            onBackground = Black300,
+            onSurface = Black300,
             onSurfaceVariant = Grey2,
             onError = White,
             stroke = Cream,
@@ -47,13 +47,13 @@ object ColorDefaults {
 
     fun darkMainColors(
         primary: Color,
-        surface: Color = Black3,
+        surface: Color = Black200,
     ): MainColors =
         MainColors(
             primary = primary,
             disabled = Black100,
-            secondary = Black3,
-            background = Black2,
+            secondary = Black200,
+            background = Black300,
             surface = surface,
             surfaceVariant = Black100,
             error = Red,

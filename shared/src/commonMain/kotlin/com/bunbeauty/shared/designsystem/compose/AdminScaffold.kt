@@ -73,6 +73,8 @@ fun AdminScaffold(
                             modifier = Modifier.align(Alignment.TopCenter),
                             isRefreshing = refreshing,
                             state = pullToRefreshState,
+                            containerColor = AdminTheme.colors.main.surface,
+                            color = AdminTheme.colors.main.primary,
                         )
                     },
                 ) {

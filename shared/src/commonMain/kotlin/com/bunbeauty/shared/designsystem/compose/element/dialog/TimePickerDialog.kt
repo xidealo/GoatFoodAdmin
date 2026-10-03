@@ -6,10 +6,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TimePicker
+import androidx.compose.material3.TimePickerDefaults
 import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -52,6 +54,18 @@ fun TimePickerDialog(
             TimePicker(
                 modifier = Modifier.padding(top = 16.dp),
                 state = timePickerState,
+                colors =
+                    TimePickerDefaults.colors(
+                        clockDialColor = AdminTheme.colors.main.surfaceVariant,
+                        clockDialSelectedContentColor = AdminTheme.colors.main.onPrimary,
+                        clockDialUnselectedContentColor = AdminTheme.colors.main.onSurface,
+                        selectorColor = AdminTheme.colors.main.primary,
+                        containerColor = AdminTheme.colors.main.surface,
+                        timeSelectorSelectedContainerColor = AdminTheme.colors.main.surfaceVariant,
+                        timeSelectorSelectedContentColor = AdminTheme.colors.main.primary,
+                        timeSelectorUnselectedContainerColor = AdminTheme.colors.main.surfaceVariant,
+                        timeSelectorUnselectedContentColor = AdminTheme.colors.main.onSurface,
+                    ),
             )
 
             Row(
@@ -63,6 +77,10 @@ fun TimePickerDialog(
                 Spacer(modifier = Modifier.weight(1f))
                 TextButton(
                     onClick = onDismiss,
+                    colors =
+                        ButtonDefaults.textButtonColors(
+                            contentColor = AdminTheme.colors.main.onSurface,
+                        ),
                 ) {
                     Text(
                         text = stringResource(Res.string.action_common_cancel),
@@ -72,6 +90,10 @@ fun TimePickerDialog(
                 }
                 TextButton(
                     modifier = Modifier.padding(start = 8.dp),
+                    colors =
+                        ButtonDefaults.textButtonColors(
+                            contentColor = AdminTheme.colors.main.primary,
+                        ),
                     onClick = {
                         onConfirm(
                             timePickerState.hour,

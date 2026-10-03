@@ -16,7 +16,6 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Text
-import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -52,7 +51,8 @@ fun AdminModalBottomSheet(
         ),
     shape: Shape = AdminBottomSheetDefaults.shape,
     containerColor: Color = AdminTheme.colors.main.surface,
-    contentColor: Color = contentColorFor(containerColor),
+    contentColor: Color = AdminTheme.colors.main.onSurface,
+    scrimColor: Color = AdminBottomSheetDefaults.scrimColor,
     dragHandle: @Composable (() -> Unit)? = { AdminBottomSheetDefaults.DragHandle() },
     contentWindowInsets: @Composable () -> WindowInsets = { BottomSheetDefaults.windowInsets },
     density: Density = LocalDensity.current,
@@ -87,6 +87,7 @@ fun AdminModalBottomSheet(
             shape = shape,
             containerColor = containerColor,
             contentColor = contentColor,
+            scrimColor = scrimColor,
             dragHandle = dragHandle,
             contentWindowInsets = contentWindowInsets,
             modifier = modifier,

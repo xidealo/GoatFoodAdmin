@@ -9,6 +9,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MenuDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -91,6 +92,15 @@ fun AdminTextFieldWithMenu(
                             onClick = {
                                 onSuggestionClick(suggestion)
                             },
+                            colors =
+                                MenuDefaults.itemColors(
+                                    textColor = AdminTheme.colors.main.onSurface,
+                                    leadingIconColor = AdminTheme.colors.main.onSurfaceVariant,
+                                    trailingIconColor = AdminTheme.colors.main.onSurfaceVariant,
+                                    disabledTextColor = AdminTheme.colors.main.onDisabled,
+                                    disabledLeadingIconColor = AdminTheme.colors.main.onDisabled,
+                                    disabledTrailingIconColor = AdminTheme.colors.main.onDisabled,
+                                ),
                         )
                     }
                 }
