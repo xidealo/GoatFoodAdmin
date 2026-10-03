@@ -8,10 +8,16 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.bunbeauty.shared.designsystem.compose.theme.AdminTheme
 
 object AdminBottomSheetDefaults {
+    /** Непрозрачность затемнения под шторкой, как в Material 3. */
+    private const val SCRIM_ALPHA = 0.32f
+
+    val scrimColor: Color = Color.Black.copy(alpha = SCRIM_ALPHA)
+
     val shape: RoundedCornerShape
         @Composable get() =
             RoundedCornerShape(

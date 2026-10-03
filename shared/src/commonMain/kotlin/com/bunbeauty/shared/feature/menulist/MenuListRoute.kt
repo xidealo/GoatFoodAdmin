@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -262,6 +263,7 @@ private fun MenuListSeparatedContent(
                             ),
                     text = stringResource(Res.string.title_menu_list_position_visible),
                     style = AdminTheme.typography.titleMedium.bold,
+                    color = AdminTheme.colors.main.onBackground,
                 )
             }
             items(
@@ -295,6 +297,7 @@ private fun MenuListSeparatedContent(
                             ),
                     text = stringResource(Res.string.title_menu_list_position_hidden),
                     style = AdminTheme.typography.titleMedium.bold,
+                    color = AdminTheme.colors.main.onBackground,
                 )
             }
             items(
@@ -405,6 +408,8 @@ private fun MenuListProductCard(
                         .weight(1f)
                         .padding(top = AdminTheme.dimensions.smallSpace)
                         .padding(horizontal = AdminTheme.dimensions.smallSpace),
+                style = AdminTheme.typography.bodyMedium,
+                color = AdminTheme.colors.main.onSurface,
             )
 
             IconButton(
@@ -415,6 +420,15 @@ private fun MenuListProductCard(
                 onClick = {
                     onUpdateVisible(menuProduct)
                 },
+                colors =
+                    IconButtonDefaults.iconButtonColors(
+                        contentColor =
+                            if (menuProduct.visible) {
+                                AdminTheme.colors.main.primary
+                            } else {
+                                AdminTheme.colors.main.onSurfaceVariant
+                            },
+                    ),
             ) {
                 Icon(
                     painter =
