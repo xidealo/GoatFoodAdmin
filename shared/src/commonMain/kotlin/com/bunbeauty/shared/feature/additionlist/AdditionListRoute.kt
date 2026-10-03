@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -262,6 +263,7 @@ private fun AdditionListSeparatedContent(
                             ),
                     text = stringResource(Res.string.title_menu_list_position_visible),
                     style = AdminTheme.typography.titleMedium.bold,
+                    color = AdminTheme.colors.main.onBackground,
                 )
             }
             items(
@@ -293,6 +295,7 @@ private fun AdditionListSeparatedContent(
                                     ),
                             text = visibleAddition.title,
                             style = AdminTheme.typography.titleSmall.bold,
+                            color = AdminTheme.colors.main.onBackground,
                         )
                 }
             }
@@ -312,6 +315,7 @@ private fun AdditionListSeparatedContent(
                             ),
                     text = stringResource(Res.string.title_menu_list_position_hidden),
                     style = AdminTheme.typography.titleMedium.bold,
+                    color = AdminTheme.colors.main.onBackground,
                 )
             }
             items(
@@ -343,6 +347,7 @@ private fun AdditionListSeparatedContent(
                                     ),
                             text = hiddenAddition.title,
                             style = AdminTheme.typography.titleSmall.bold,
+                            color = AdminTheme.colors.main.onBackground,
                         )
                 }
             }
@@ -385,6 +390,7 @@ private fun AdditionListSearchResultScreen(
                     Text(
                         text = additionItem.title,
                         style = AdminTheme.typography.titleSmall.bold,
+                        color = AdminTheme.colors.main.onBackground,
                     )
             }
         }
@@ -459,6 +465,8 @@ private fun AdditionCard(
                         .weight(1f)
                         .padding(top = AdminTheme.dimensions.smallSpace)
                         .padding(horizontal = AdminTheme.dimensions.smallSpace),
+                style = AdminTheme.typography.bodyMedium,
+                color = AdminTheme.colors.main.onSurface,
             )
 
             IconButton(
@@ -474,6 +482,10 @@ private fun AdditionCard(
                         ),
                     )
                 },
+                colors =
+                    IconButtonDefaults.iconButtonColors(
+                        contentColor = additionItem.iconColor,
+                    ),
             ) {
                 Icon(
                     painter = painterResource(Res.drawable.ic_visible),

@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -359,6 +360,9 @@ private fun CancellationWarningDialog(
 
     AlertDialog(
         onDismissRequest = onDismiss,
+        containerColor = AdminTheme.colors.main.surface,
+        titleContentColor = AdminTheme.colors.main.onSurface,
+        textContentColor = AdminTheme.colors.main.onSurface,
         title = {
             Text(text = stringResource(Res.string.title_order_details_alert))
         },
@@ -366,13 +370,31 @@ private fun CancellationWarningDialog(
             Text(text = stringResource(Res.string.msg_order_details_alert))
         },
         confirmButton = {
-            TextButton(onClick = onConfirm) {
-                Text(text = stringResource(Res.string.action_order_details_yes))
+            TextButton(
+                onClick = onConfirm,
+                colors =
+                    ButtonDefaults.textButtonColors(
+                        contentColor = AdminTheme.colors.main.primary,
+                    ),
+            ) {
+                Text(
+                    text = stringResource(Res.string.action_order_details_yes),
+                    color = AdminTheme.colors.main.primary,
+                )
             }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) {
-                Text(text = stringResource(Res.string.action_order_details_no))
+            TextButton(
+                onClick = onDismiss,
+                colors =
+                    ButtonDefaults.textButtonColors(
+                        contentColor = AdminTheme.colors.main.primary,
+                    ),
+            ) {
+                Text(
+                    text = stringResource(Res.string.action_order_details_no),
+                    color = AdminTheme.colors.main.primary,
+                )
             }
         },
     )
