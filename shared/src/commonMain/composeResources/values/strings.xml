@@ -69,6 +69,9 @@
     <!-- ORDER DETAILS -->
     <string name="msg_order_details_order_time">Дата и время заказа</string>
     <string name="msg_order_details_pickup_method">Способ получения</string>
+    <string name="msg_order_details_pickup_serving">Самовывоз</string>
+    <string name="msg_order_details_pickup_on_tray">На подносе</string>
+    <string name="msg_order_details_pickup_in_bag">В пакете</string>
     <string name="msg_order_details_payment_method">Способ оплаты</string>
     <string name="msg_order_details_phone">Номер телефона</string>
     <string name="msg_order_details_deferred_time">Ко времени</string>

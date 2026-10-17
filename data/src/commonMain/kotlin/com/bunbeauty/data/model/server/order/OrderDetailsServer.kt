@@ -24,6 +24,7 @@ class OrderDetailsServer(
     val oderProductList: List<OrderProductServer>,
     val availableStatusList: List<String>,
     val isProblematic: Boolean = false,
+    val pickupServing: String? = null,
 )
 
 @Serializable

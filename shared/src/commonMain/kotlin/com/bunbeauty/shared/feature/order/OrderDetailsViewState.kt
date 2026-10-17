@@ -8,6 +8,7 @@ import com.bunbeauty.domain.model.cartproduct.OrderProduct
 import com.bunbeauty.domain.model.order.details.OrderAddress
 import com.bunbeauty.domain.model.order.details.OrderDetails
 import com.bunbeauty.domain.model.order.details.PaymentMethod
+import com.bunbeauty.domain.model.order.details.PickupServing
 import com.bunbeauty.domain.util.datetime.PATTERN_DD_MMMM_HH_MM
 import com.bunbeauty.domain.util.datetime.PATTERN_HH_MM
 import com.bunbeauty.shared.feature.order.mapper.orderStatusMap
@@ -25,6 +26,8 @@ import fooddeliveryadmin.shared.generated.resources.msg_address_entrance
 import fooddeliveryadmin.shared.generated.resources.msg_address_flat
 import fooddeliveryadmin.shared.generated.resources.msg_address_floor
 import fooddeliveryadmin.shared.generated.resources.msg_address_house
+import fooddeliveryadmin.shared.generated.resources.msg_order_details_pickup_in_bag
+import fooddeliveryadmin.shared.generated.resources.msg_order_details_pickup_on_tray
 import fooddeliveryadmin.shared.generated.resources.msg_payment_card
 import fooddeliveryadmin.shared.generated.resources.msg_payment_card_number
 import fooddeliveryadmin.shared.generated.resources.msg_payment_cash
@@ -50,6 +53,7 @@ data class OrderDetailsViewState(
             val deferredTime: HintWithValue?,
             val paymentMethod: String?,
             val receiptMethod: String,
+            val pickupServing: String?,
             val address: String,
             val mapQuery: String?,
             val comment: String?,
@@ -114,6 +118,7 @@ internal fun OrderDetailsState.DataState.toViewState(): OrderDetailsViewState =
                             deferredTime = getDeferredTime(details),
                             paymentMethod = details.paymentMethod?.map(),
                             receiptMethod = getReceiptMethod(orderDetails),
+                            pickupServing = details.pickupServing?.map(),
                             address = getOrderAddressString(details.address),
                             mapQuery = mapQuery,
                             comment = details.comment,
@@ -266,6 +271,15 @@ private fun getAdditionsString(orderProduct: OrderProduct): String? =
                 orderAddition.name
             }
         }
+
+@Composable
+fun PickupServing.map(): String =
+    when (this) {
+        PickupServing.TRAY -> Res.string.msg_order_details_pickup_on_tray
+        PickupServing.BAG -> Res.string.msg_order_details_pickup_in_bag
+    }.let { nameResId ->
+        stringResource(nameResId)
+    }
 
 @Composable
 fun PaymentMethod.map(): String =
