@@ -55,6 +55,8 @@ import fooddeliveryadmin.shared.generated.resources.msg_common_check_connection_
 import fooddeliveryadmin.shared.generated.resources.msg_settings_disable_orders
 import fooddeliveryadmin.shared.generated.resources.msg_settings_kitchen_appliances
 import fooddeliveryadmin.shared.generated.resources.msg_settings_kitchen_appliances_hint
+import fooddeliveryadmin.shared.generated.resources.msg_settings_pickup_method
+import fooddeliveryadmin.shared.generated.resources.msg_settings_pickup_method_hint
 import fooddeliveryadmin.shared.generated.resources.msg_settings_status_accept_orders
 import fooddeliveryadmin.shared.generated.resources.msg_settings_status_delivery
 import fooddeliveryadmin.shared.generated.resources.msg_settings_status_pickup
@@ -253,6 +255,20 @@ private fun SuccessSettingsScreen(
                 onAction(
                     SettingsState.Action.OnAppliancesClicked(
                         isKitchenAppliances = isKitchenAppliances,
+                    ),
+                )
+            },
+        )
+        SwitcherCard(
+            hint = stringResource(Res.string.msg_settings_pickup_method_hint),
+            modifier = Modifier.padding(vertical = 8.dp),
+            elevated = false,
+            text = stringResource(Res.string.msg_settings_pickup_method),
+            checked = state.isPickupMethod,
+            onCheckChanged = { isPickupMethod ->
+                onAction(
+                    SettingsState.Action.OnPickupMethodClicked(
+                        isPickupMethod = isPickupMethod,
                     ),
                 )
             },
@@ -510,6 +526,7 @@ private fun SettingsScreenPreview() {
                         SettingsViewState.State.Success(
                             isNotifications = true,
                             isAppliances = true,
+                            isPickupMethod = true,
                             workType = WorkType.DELIVERY_AND_PICKUP,
                             acceptOrdersConfirmation =
                                 SettingsViewState.AcceptOrdersConfirmation(
@@ -540,6 +557,7 @@ private fun SettingsScreenDarkPreview() {
                         SettingsViewState.State.Success(
                             isNotifications = true,
                             isAppliances = true,
+                            isPickupMethod = true,
                             workType = WorkType.DELIVERY_AND_PICKUP,
                             acceptOrdersConfirmation =
                                 SettingsViewState.AcceptOrdersConfirmation(

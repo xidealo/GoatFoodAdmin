@@ -25,6 +25,7 @@ data class SettingsViewState(
         data class Success(
             val isNotifications: Boolean,
             val isAppliances: Boolean,
+            val isPickupMethod: Boolean,
             val workType: WorkType,
             val acceptOrdersConfirmation: AcceptOrdersConfirmation,
             val isLoading: Boolean,
@@ -54,6 +55,7 @@ internal fun SettingsState.DataState.toViewState(): SettingsViewState =
                     SettingsViewState.State.Success(
                         isNotifications = isUnlimitedNotifications,
                         isAppliances = isKitchenAppliances,
+                        isPickupMethod = isPickupMethod,
                         workType = workType,
                         workLoad = workLoad,
                         acceptOrdersConfirmation =

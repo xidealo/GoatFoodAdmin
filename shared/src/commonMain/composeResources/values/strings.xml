@@ -70,6 +70,9 @@
     <string name="msg_order_details_order_time">Дата и время заказа</string>
     <string name="msg_order_details_pickup_method">Способ получения</string>
     <string name="msg_order_details_payment_method">Способ оплаты</string>
+    <string name="msg_order_details_pickup_type">Самовывоз</string>
+    <string name="msg_order_details_pickup_type_tray">На подносе</string>
+    <string name="msg_order_details_pickup_type_bag">В пакете</string>
     <string name="msg_order_details_phone">Номер телефона</string>
     <string name="msg_order_details_deferred_time">Ко времени</string>
     <string name="msg_order_details_address">Адрес</string>
@@ -257,6 +260,8 @@
     <string name="msg_settings_unlimited_notifications">Настойчивые оповещения</string>
     <string name="msg_settings_kitchen_appliances">Приборы</string>
     <string name="msg_settings_kitchen_appliances_hint">Пользователь должен указать количество приборов</string>
+    <string name="msg_settings_pickup_method">Способ самовывоза</string>
+    <string name="msg_settings_pickup_method_hint">Пользователь может выбрать способ самовывоза «На подносе» или «В пакете»</string>
     <string name="msg_settings_type_work">Тип работы</string>
     <string name="msg_settings_status_delivery">Доставка</string>
     <string name="msg_settings_status_pickup">Самовывоз</string>

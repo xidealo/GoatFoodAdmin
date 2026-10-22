@@ -31,6 +31,7 @@ class SettingsViewModel(
                 showAcceptOrdersConfirmation = false,
                 workLoad = WorkLoad.LOW,
                 isKitchenAppliances = false,
+                isPickupMethod = false,
                 unfinishedOrderCodes = emptyList(),
             ),
     ) {
@@ -55,6 +56,7 @@ class SettingsViewModel(
             SettingsState.Action.ConfirmNotAcceptOrders -> handleConfirmNotAcceptOrders(dataState)
             is SettingsState.Action.OnSelectWorkLoadClicked -> selectWorkLoad(workLoad = action.workload)
             is SettingsState.Action.OnAppliancesClicked -> setAppliancesStatus(action = action)
+            is SettingsState.Action.OnPickupMethodClicked -> setPickupMethodStatus(action = action)
             SettingsState.Action.OnWorkingHoursClicked -> openWorkingHours()
         }
     }
@@ -120,6 +122,12 @@ class SettingsViewModel(
     private fun setAppliancesStatus(action: SettingsState.Action.OnAppliancesClicked) {
         setState {
             copy(isKitchenAppliances = action.isKitchenAppliances)
+        }
+    }
+
+    private fun setPickupMethodStatus(action: SettingsState.Action.OnPickupMethodClicked) {
+        setState {
+            copy(isPickupMethod = action.isPickupMethod)
         }
     }
 

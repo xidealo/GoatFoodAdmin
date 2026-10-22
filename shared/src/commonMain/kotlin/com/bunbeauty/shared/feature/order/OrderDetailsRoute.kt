@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.toRoute
+import com.bunbeauty.domain.enums.OrderStatus
 import com.bunbeauty.shared.designsystem.compose.AdminScaffold
 import com.bunbeauty.shared.designsystem.compose.bottomBarPadding
 import com.bunbeauty.shared.designsystem.compose.element.bottomsheet.AdminModalBottomSheet
@@ -49,6 +50,7 @@ import com.bunbeauty.shared.designsystem.compose.theme.bold
 import com.bunbeauty.shared.designsystem.compose.theme.medium
 import com.bunbeauty.shared.feature.order.navigation.OrderDetailsScreenDestination
 import com.bunbeauty.shared.feature.order.state.OrderDetailsState
+import com.bunbeauty.shared.feature.orderlist.compose.getOrderColor
 import fooddeliveryadmin.shared.generated.resources.Res
 import fooddeliveryadmin.shared.generated.resources.action_order_details_do_not_save
 import fooddeliveryadmin.shared.generated.resources.action_order_details_no
@@ -70,13 +72,18 @@ import fooddeliveryadmin.shared.generated.resources.msg_order_details_order_cost
 import fooddeliveryadmin.shared.generated.resources.msg_order_details_order_time
 import fooddeliveryadmin.shared.generated.resources.msg_order_details_payment_method
 import fooddeliveryadmin.shared.generated.resources.msg_order_details_pickup_method
+import fooddeliveryadmin.shared.generated.resources.msg_order_details_pickup_type
+import fooddeliveryadmin.shared.generated.resources.msg_order_details_pickup_type_bag
+import fooddeliveryadmin.shared.generated.resources.msg_order_details_pickup_type_tray
 import fooddeliveryadmin.shared.generated.resources.msg_order_details_problematic_client
 import fooddeliveryadmin.shared.generated.resources.msg_order_details_saved
 import fooddeliveryadmin.shared.generated.resources.title_common_can_not_load_data
 import fooddeliveryadmin.shared.generated.resources.title_order_details_alert
 import fooddeliveryadmin.shared.generated.resources.title_order_status
+import kotlinx.collections.immutable.persistentListOf
 import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -482,6 +489,12 @@ private fun OrderInfoCard(
                 )
             }
         }
+        stateSuccess.pickupType?.let { pickupType ->
+            OrderInfoTextColumn(
+                hint = stringResource(Res.string.msg_order_details_pickup_type),
+                info = pickupType,
+            )
+        }
         stateSuccess.comment?.let { comment ->
             OrderInfoTextColumn(
                 hint = stringResource(Res.string.msg_order_details_comment),
@@ -588,6 +601,122 @@ private fun BottomAmountBar(
             onClick = {
                 onAction(OrderDetailsState.Action.OnBackClicked)
             },
+        )
+    }
+}
+
+@Composable
+private fun previewOrderDetailsViewState(pickupType: String? = null): OrderDetailsViewState {
+    val isPickup = pickupType != null
+    return OrderDetailsViewState(
+        title = "Заказ «А-12»",
+        state =
+            OrderDetailsViewState.State.Success(
+                clientUserUuid = "",
+                dateTime = "22 октября 12:30",
+                deferredTime =
+                    if (isPickup) {
+                        null
+                    } else {
+                        OrderDetailsViewState.HintWithValue(
+                            hint = "Время доставки",
+                            value = "13:30",
+                        )
+                    },
+                paymentMethod = "Картой",
+                receiptMethod = if (isPickup) "Самовывоз" else "Доставка",
+                pickupType = pickupType,
+                address = "ул. Ленина, д. 1, кв. 10, подъезд 2, этаж 3",
+                mapQuery = "ул. Ленина, д. 1",
+                comment = "Позвонить за 10 минут",
+                status = "Принят",
+                statusColor = getOrderColor(orderStatus = OrderStatus.ACCEPTED),
+                phoneNumber = "+7 (900) 000-00-00",
+                productList =
+                    persistentListOf(
+                        OrderDetailsViewState.Product(
+                            title = "Бургер",
+                            price = "350 ₽",
+                            count = "× 2",
+                            cost = "700 ₽",
+                            description = "Сыр • Бекон",
+                        ),
+                        OrderDetailsViewState.Product(
+                            title = "Картофель фри",
+                            price = "150 ₽",
+                            count = "× 1",
+                            cost = "150 ₽",
+                            description = null,
+                        ),
+                    ),
+                percentDiscount = "10%",
+                deliveryCost = if (isPickup) null else "100 ₽",
+                finalCost = if (isPickup) "765 ₽" else "865 ₽",
+                saving = false,
+                statusListUI =
+                    OrderDetailsViewState.State.Success.StatusListUI(
+                        isShown = false,
+                        statusList = persistentListOf(),
+                    ),
+                isProblematic = true,
+            ),
+    )
+}
+
+@Preview
+@Composable
+private fun OrderDetailsScreenPreview() {
+    AdminTheme(isDarkTheme = false) {
+        OrderDetailsScreen(
+            state = previewOrderDetailsViewState(),
+            onAction = {},
+            onCallPhone = {},
+            onOpenMap = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun OrderDetailsScreenDarkPreview() {
+    AdminTheme(isDarkTheme = true) {
+        OrderDetailsScreen(
+            state = previewOrderDetailsViewState(),
+            onAction = {},
+            onCallPhone = {},
+            onOpenMap = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun OrderDetailsScreenPickupTrayPreview() {
+    AdminTheme(isDarkTheme = false) {
+        OrderDetailsScreen(
+            state =
+                previewOrderDetailsViewState(
+                    pickupType = stringResource(Res.string.msg_order_details_pickup_type_tray),
+                ),
+            onAction = {},
+            onCallPhone = {},
+            onOpenMap = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun OrderDetailsScreenPickupBagPreview() {
+    AdminTheme(isDarkTheme = false) {
+        OrderDetailsScreen(
+            state =
+                previewOrderDetailsViewState(
+                    pickupType = stringResource(Res.string.msg_order_details_pickup_type_bag),
+                ),
+            onAction = {},
+            onCallPhone = {},
+            onOpenMap = {},
         )
     }
 }

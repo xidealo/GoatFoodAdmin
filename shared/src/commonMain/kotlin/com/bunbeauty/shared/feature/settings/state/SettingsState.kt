@@ -11,6 +11,7 @@ interface SettingsState {
         val state: State,
         val isUnlimitedNotifications: Boolean,
         val isKitchenAppliances: Boolean,
+        val isPickupMethod: Boolean,
         val workType: WorkType,
         val workLoad: WorkLoad,
         val isLoading: Boolean,
@@ -36,6 +37,10 @@ interface SettingsState {
 
         data class OnAppliancesClicked(
             val isKitchenAppliances: Boolean,
+        ) : Action
+
+        data class OnPickupMethodClicked(
+            val isPickupMethod: Boolean,
         ) : Action
 
         data object OnSaveSettingsClick : Action
