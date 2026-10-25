@@ -2,7 +2,9 @@ package com.bunbeauty.shared.feature.workinghours
 
 import DateTimeUtil
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -172,8 +174,7 @@ private fun WorkingHoursSuccessScreen(
             Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(top = 16.dp)
-                .padding(bottom = 88.dp),
+                .padding(top = 16.dp),
     ) {
         state.workingDays.forEach { day ->
             val isInvalid = state.hasInvalidRange && day.fromTime >= day.toTime
@@ -204,6 +205,7 @@ private fun WorkingHoursSuccessScreen(
                 },
             )
         }
+        Spacer(modifier = Modifier.height(AdminTheme.dimensions.scrollScreenBottomSpace()))
     }
 
     state.timePicker?.let { timePicker ->
