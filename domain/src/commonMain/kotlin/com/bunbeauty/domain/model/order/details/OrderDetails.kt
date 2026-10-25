@@ -23,6 +23,7 @@ data class OrderDetails(
     val oderProductList: List<OrderProduct>,
     val availableStatusList: List<OrderStatus>,
     val isProblematic: Boolean = false,
+    val pickupServing: PickupServing? = null,
 ) {
     companion object {
         val mock =

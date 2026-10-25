@@ -70,6 +70,7 @@ import fooddeliveryadmin.shared.generated.resources.msg_order_details_order_cost
 import fooddeliveryadmin.shared.generated.resources.msg_order_details_order_time
 import fooddeliveryadmin.shared.generated.resources.msg_order_details_payment_method
 import fooddeliveryadmin.shared.generated.resources.msg_order_details_pickup_method
+import fooddeliveryadmin.shared.generated.resources.msg_order_details_pickup_serving
 import fooddeliveryadmin.shared.generated.resources.msg_order_details_problematic_client
 import fooddeliveryadmin.shared.generated.resources.msg_order_details_saved
 import fooddeliveryadmin.shared.generated.resources.title_common_can_not_load_data
@@ -481,6 +482,12 @@ private fun OrderInfoCard(
                     info = paymentMethod,
                 )
             }
+        }
+        stateSuccess.pickupServing?.let { pickupServing ->
+            OrderInfoTextColumn(
+                hint = stringResource(Res.string.msg_order_details_pickup_serving),
+                info = pickupServing,
+            )
         }
         stateSuccess.comment?.let { comment ->
             OrderInfoTextColumn(

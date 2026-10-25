@@ -353,7 +353,7 @@ class FoodDeliveryApiImpl(
         orderUuid: String,
     ): ApiResult<OrderDetailsServer> =
         get(
-            path = "v2/order/details",
+            path = "v3/order/details",
             parameters = listOf("uuid" to orderUuid),
             token = token,
         )

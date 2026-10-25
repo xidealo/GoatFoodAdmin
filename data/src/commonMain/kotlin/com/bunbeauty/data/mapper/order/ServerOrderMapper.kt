@@ -9,6 +9,7 @@ import com.bunbeauty.domain.model.order.details.ClientUser
 import com.bunbeauty.domain.model.order.details.OrderAddress
 import com.bunbeauty.domain.model.order.details.OrderDetails
 import com.bunbeauty.domain.model.order.details.PaymentMethod
+import com.bunbeauty.domain.model.order.details.PickupServing
 
 class ServerOrderMapper(
     private val oderProductMapper: OderProductMapper,
@@ -52,6 +53,10 @@ class ServerOrderMapper(
             oderProductList = orderDetailsServer.oderProductList.map(oderProductMapper::toModel),
             availableStatusList = orderDetailsServer.availableStatusList.mapNotNull(::getOrderStatusNullable),
             isProblematic = orderDetailsServer.clientUser.isProblematic,
+            pickupServing =
+                PickupServing.entries.firstOrNull { serving ->
+                    serving.name == orderDetailsServer.pickupServing
+                },
         )
 
     override fun mapOrder(orderServer: OrderServer): Order =
